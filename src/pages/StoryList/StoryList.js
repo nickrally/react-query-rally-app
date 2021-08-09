@@ -1,18 +1,18 @@
 import { useQuery } from "react-query";
 import { getAllStories } from "../../fetch/wsapi";
-import { Container } from "../../shared/Container";
 import { Story } from "./Story";
+import "./StoryList.scss";
 
 export const StoryList = () => {
   const { data, error, isLoading } = useQuery("stories", getAllStories);
   if (isLoading) {
-    return <Container>Loading...</Container>;
+    return <div>Loading...</div>;
   }
   if (error) {
     return <span>OH NOES! {error.message}</span>;
   }
   return (
-    <Container>
+    <div>
       <div>
         {/*<pre>{JSON.stringify(data)}</pre>*/}
         <ul>
@@ -20,6 +20,7 @@ export const StoryList = () => {
             <li key={story.ObjectID}>
               {
                 <Story
+                  className="story"
                   objectid={story.ObjectID}
                   name={story.Name}
                   planEstimate={story.PlanEstimate}
@@ -29,6 +30,6 @@ export const StoryList = () => {
           ))}
         </ul>
       </div>
-    </Container>
+    </div>
   );
 };

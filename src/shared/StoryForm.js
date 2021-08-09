@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./StoryForm.scss";
 
 export const StoryForm = ({ onFormSubmit, defaultData = null }) => {
   let defaultName = defaultData && defaultData.Name ? defaultData.Name : "";
@@ -14,16 +15,18 @@ export const StoryForm = ({ onFormSubmit, defaultData = null }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Name</label>
+    <form className="form" onSubmit={handleSubmit}>
+      <label className="label">Name</label>
       <input
+        className="field"
         type="text"
         defaultValue={defaultName}
         onChange={(e) => setName(e.target.value)}
       />
       <br />
-      <label>Plan Estimate</label>
+      <label className="label">Plan Estimate</label>
       <input
+        className="field"
         type="text"
         defaultValue={defaultPlanEstimate}
         onChange={(e) => setPlanEstimate(e.target.value)}

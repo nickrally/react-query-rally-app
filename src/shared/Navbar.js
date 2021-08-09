@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
-import { Container } from "./Container";
+import "./Navbar.scss";
 
 export const Navbar = () => {
   return (
-    <div>
-      <Container>
-        <Link to="/">Home</Link>
-        <Link to="/create-story">Add new story</Link>
-      </Container>
+    <div className="topnav">
+      <ul>
+        <li className="active">
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/create-story">Add new story</Link>
+        </li>
+      </ul>
     </div>
   );
 };

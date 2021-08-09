@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
-import { StoryForm, Container } from "../../shared";
+import { StoryForm } from "../../shared";
 import { createStory } from "../../fetch/wsapi";
 
 export const CreateStory = () => {
@@ -14,15 +14,15 @@ export const CreateStory = () => {
     history.push("/");
   };
   if (isLoading) {
-    return <Container>Loading...</Container>;
+    return <div>Loading...</div>;
   }
   if (isError) {
-    return <Container>{error.message}</Container>;
+    return <div>{error.message}</div>;
   }
   return (
-    <Container>
+    <div>
       <h2>Create story</h2>
       <StoryForm onFormSubmit={onFormSubmit} />
-    </Container>
+    </div>
   );
 };

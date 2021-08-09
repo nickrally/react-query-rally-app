@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
 import { deleteStory } from "../../fetch/wsapi";
+import "./Story.scss";
 
 export const Story = ({ objectid, name, planEstimate }) => {
   const queryClient = useQueryClient();
@@ -12,9 +13,13 @@ export const Story = ({ objectid, name, planEstimate }) => {
   };
   return (
     <div>
-      <Link to={`/update-story/${objectid}`}>{name}</Link>
-      ObjectID: {objectid}, Name: {name}, Plan Estimate: {planEstimate}
-      <button onClick={remove}>Remove</button>
+      <Link to={`/update-story/${objectid}`}>{objectid}</Link>
+      <p>
+        Name: {name}, Plan Estimate: {planEstimate}
+      </p>
+      <button onClick={remove} className="remove-button">
+        Remove
+      </button>
     </div>
   );
 };
