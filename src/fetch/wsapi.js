@@ -13,7 +13,7 @@ const shortType = type.split("/")[1];
 const url = `${wsapiUrl}/${type}`;
 
 export const getAllItems = async ({ queryKey }) => {
-  console.log("queryKey in getAllItems", queryKey); //stories
+  console.log("queryKey in getAllItems", queryKey);
   const params = {
     workspace: `/workspace/${workspace}`,
     query: `(Project.ObjectID = ${project})`,
@@ -28,7 +28,7 @@ export const getAllItems = async ({ queryKey }) => {
 };
 
 export const getItem = async ({ queryKey }) => {
-  console.log("queryKey", queryKey); //story
+  console.log("queryKey", queryKey);
   const [key, { objectid }] = queryKey;
   const itemUrl = `${wsapiUrl}/${type}/${objectid}`;
   const params = {
