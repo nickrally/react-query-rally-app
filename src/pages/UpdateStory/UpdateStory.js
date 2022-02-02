@@ -1,21 +1,21 @@
 import { useParams, useHistory } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { StoryForm } from "../../shared";
-import { getStory, updateStory } from "../../fetch/wsapi";
+import { getItem, updateItem } from "../../fetch/wsapi";
 
 export const UpdateStory = () => {
   const { objectid } = useParams();
   const history = useHistory();
   const queryClient = useQueryClient();
-  const { mutateAsync } = useMutation(updateStory);
+  const { mutateAsync } = useMutation(updateItem);
 
   const { data, error, isLoading, isError } = useQuery(
-    ["story", { objectid }],
-    getStory
+    ["feature", { objectid }],
+    getItem
   );
   const onFormSubmit = async (payload) => {
     await mutateAsync({ ...payload, objectid });
-    queryClient.invalidateQueries("story");
+    queryClient.invalidateQueries("feature");
     history.push("/");
   };
 

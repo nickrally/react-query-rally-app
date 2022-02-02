@@ -1,16 +1,17 @@
 import { useHistory } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
 import { StoryForm } from "../../shared";
-import { createStory } from "../../fetch/wsapi";
+import { createItem } from "../../fetch/wsapi";
 
 export const CreateStory = () => {
   const history = useHistory();
   const queryClient = useQueryClient();
-  const { mutateAsync, error, isError, isLoading } = useMutation(createStory);
+  const { mutateAsync, error, isError, isLoading } = useMutation(createItem);
 
   const onFormSubmit = (payload) => {
     mutateAsync(payload);
-    queryClient.invalidateQueries("stories");
+    queryClient.invalidateQueries("features");
+    //queryClient.removeQueries("stories");
     history.push("/");
   };
   if (isLoading) {

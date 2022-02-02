@@ -1,10 +1,10 @@
 import { useQuery } from "react-query";
-import { getAllStories } from "../../fetch/wsapi";
+import { getAllItems } from "../../fetch/wsapi";
 import { Story } from "./Story";
 import "./StoryList.scss";
 
 export const StoryList = () => {
-  const { data, error, isLoading } = useQuery("stories", getAllStories);
+  const { data, error, isLoading } = useQuery("features", getAllItems);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -16,14 +16,15 @@ export const StoryList = () => {
       <div>
         {/*<pre>{JSON.stringify(data)}</pre>*/}
         <ul>
-          {data["QueryResult"]["Results"].map((story) => (
-            <li key={story.ObjectID}>
+          {data["QueryResult"]["Results"].map((item) => (
+            <li key={item.ObjectID}>
               {
                 <Story
                   className="story"
-                  objectid={story.ObjectID}
-                  name={story.Name}
-                  planEstimate={story.PlanEstimate}
+                  objectid={item.ObjectID}
+                  name={item.Name}
+                  plannedStartDate={item.PlannedStartDate}
+                  plannedEndDate={item.PlannedEndDate}
                 />
               }
             </li>

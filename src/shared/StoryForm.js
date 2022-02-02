@@ -2,16 +2,25 @@ import { useState } from "react";
 import "./StoryForm.scss";
 
 export const StoryForm = ({ onFormSubmit, defaultData = null }) => {
-  let defaultName = defaultData && defaultData.Name ? defaultData.Name : "";
-  let defaultPlanEstimate =
-    defaultData && defaultData.PlanEstimate ? defaultData.PlanEstimate : "";
+  let defaultName = defaultData && defaultData.Name ? defaultData.Name : null;
+  let defaultPlannedStartDate =
+    defaultData && defaultData.PlannedStartDate
+      ? defaultData.PlannedStartDate
+      : "";
+  let defaultPlannedEndDate =
+    defaultData && defaultData.PlannedEndDate
+      ? defaultData.PlannedEndDate
+      : null;
 
   const [name, setName] = useState(defaultName);
-  const [planEstimate, setPlanEstimate] = useState(defaultPlanEstimate);
+  const [plannedStartDate, setPlannedStartDate] = useState(
+    defaultPlannedStartDate
+  );
+  const [plannedEndDate, setPlannedEndDate] = useState(defaultPlannedEndDate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit({ name, planEstimate });
+    onFormSubmit({ name, plannedStartDate, plannedEndDate });
   };
 
   return (
@@ -24,12 +33,21 @@ export const StoryForm = ({ onFormSubmit, defaultData = null }) => {
         onChange={(e) => setName(e.target.value)}
       />
       <br />
-      <label className="label">Plan Estimate</label>
+      <label className="label">Planned Start Date:</label>
       <input
+        name="PlannedStartDate"
         className="field"
         type="text"
-        defaultValue={defaultPlanEstimate}
-        onChange={(e) => setPlanEstimate(e.target.value)}
+        defaultValue={defaultPlannedStartDate}
+        onChange={(e) => setPlannedStartDate(e.target.value)}
+      />
+      <label className="label">Planned End Date:</label>
+      <input
+        name="PlannedEndDate"
+        className="field"
+        type="text"
+        defaultValue={defaultPlannedEndDate}
+        onChange={(e) => setPlannedEndDate(e.target.value)}
       />
       <br />
       <input type="submit" value="Submit" />
