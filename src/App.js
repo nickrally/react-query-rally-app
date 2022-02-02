@@ -4,6 +4,7 @@ import { StoryList } from "./pages/StoryList";
 import { CreateStory } from "./pages/CreateStory";
 import { UpdateStory } from "./pages/UpdateStory";
 import { ReactQueryDevtools } from "react-query/devtools";
+import "./App.scss";
 
 function App() {
   return (
