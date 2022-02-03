@@ -7,7 +7,6 @@ export default class Gantt extends Component {
     super(props);
     this.initZoom();
   }
-
   // instance of gantt.dataProcessor
   dataProcessor = null;
 
@@ -50,6 +49,7 @@ export default class Gantt extends Component {
   }
 
   initGanttDataProcessor() {
+    console.log("this.props", this.props);
     /**
      * type: "task"|"link"
      * action: "create"|"update"|"delete"

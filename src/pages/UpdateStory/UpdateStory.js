@@ -5,6 +5,7 @@ import { getItem, updateItem } from "../../fetch/wsapi";
 
 export const UpdateStory = () => {
   const { objectid } = useParams();
+  console.log("objectid", objectid);
   const history = useHistory();
   const queryClient = useQueryClient();
   const { mutateAsync } = useMutation(updateItem);
@@ -14,6 +15,7 @@ export const UpdateStory = () => {
     getItem
   );
   const onFormSubmit = async (payload) => {
+    console.log("payload", payload);
     await mutateAsync({ ...payload, objectid });
     queryClient.invalidateQueries("feature");
     history.push("/");
